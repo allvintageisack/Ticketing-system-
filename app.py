@@ -18,10 +18,11 @@ class Guest(db.Model):
 
     def __repr__(self):
         return f'<Guest {self.name} RSVP: {self.rsvp_status}>'
+db.create_all()
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
+# @app.before_first_request
+# def create_tables():
+#     db.create_all()
 
 @app.route('/rsvp/<guest_id>', methods=['GET', 'POST'])
 def rsvp(guest_id):
